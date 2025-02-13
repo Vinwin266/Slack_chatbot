@@ -1,0 +1,6 @@
+slack_bolt
+openai
+pymongo
+python-dotenv
+langchain_openai
+langchain_groq
