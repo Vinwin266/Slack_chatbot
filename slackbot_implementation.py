@@ -96,4 +96,4 @@ def handle_mention(event, say):
 #if __name__ == "__main__":
 print("Starting the app...")
 handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
-handler.start(port=10000) 
+handler.start() 
