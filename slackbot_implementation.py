@@ -2,8 +2,7 @@ import os
 from datetime import datetime
 from slack_bolt import App
 from slack_bolt.adapter.socket_mode import SocketModeHandler
-from slack_bolt.oauth.oauth_settings import OAuthSettings
-from slack_bolt.oauth.store.file import FileInstallationStore
+
 import openai
 from pymongo import MongoClient
 from dotenv import load_dotenv
@@ -12,18 +11,6 @@ from langchain_groq import ChatGroq
 
 # Load environment variables
 load_dotenv()
-oauth_settings = OAuthSettings(
-    client_id=os.environ["SLACK_CLIENT_ID"],
-    client_secret=os.environ["SLACK_CLIENT_SECRET"],
-    scopes=["app_mentions:read", "chat:write"],
-    installation_store=FileInstallationStore(base_dir="./data")
-)
-
-# Initialize Slack app with OAuth
-app = App(
-    signing_secret=os.environ["SLACK_SIGNING_SECRET"],
-    oauth_settings=oauth_settings
-)
 
 # Initialize Slack app
 app = App(token=os.environ["SLACK_BOT_TOKEN"])
